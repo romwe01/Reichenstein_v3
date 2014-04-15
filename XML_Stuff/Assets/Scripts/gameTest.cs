@@ -26,10 +26,6 @@ public class gameTest : MonoBehaviour {
 
 	}
 
-	//supergeil
-
-	//dubidubidu
-	//meg
 
 	void processInput() {
 
@@ -43,8 +39,8 @@ public class gameTest : MonoBehaviour {
 			cNat = PlayerPrefs.GetInt("pNat");
 			cNat -= 5;
 			PlayerPrefs.SetInt("pNat", cNat);
-			round++;
-			PlayerPrefs.SetInt("round", round);
+			//round++;
+			//PlayerPrefs.SetInt("round", round);
 			//print("Wirt: " + PlayerPrefs.GetInt("pWirt") + " Bev: " + PlayerPrefs.GetInt("pBev") + " Nat: " + PlayerPrefs.GetInt("pNat"));
 		}
 		

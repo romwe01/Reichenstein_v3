@@ -9,6 +9,7 @@ public class XMLFileLoader : MonoBehaviour {
 	
 	public string questsFolder = "Quests";
 	public string sFileName = "questList.txt"; // Filename of List for Quests.
+	public string rFileName = "randomQuestList.txt";
 	public int questCount = 4;
 	char[] timeZone = {'A', 'B', 'C', 'D'};
 	static System.Random rnd = new System.Random();
@@ -113,11 +114,31 @@ public class XMLFileLoader : MonoBehaviour {
 		ArrayList cRand = randomize(cList);
 		ArrayList dRand = randomize(dList);
 
-		if(PlayerPrefs.GetInt("round") < questCount) {
-			PlayerPrefs.SetString("questFile", (string) aRand[PlayerPrefs.GetInt("round")]);
+		var rFile = Application.dataPath + "/" + questsFolder + "/" + rFileName;
+		
+		using(var sData = new StreamWriter(rFile)) {
+			
+			foreach(string rline in aRand) {
+				var fileName = rline.ToString(); 
+				sData.WriteLine(fileName);
+			}
+			foreach(string rline in bRand) {
+				var fileName = rline.ToString(); 
+				sData.WriteLine(fileName);
+			}
+			foreach(string rline in cRand) {
+				var fileName = rline.ToString(); 
+				sData.WriteLine(fileName);
+			}
+			foreach(string rline in dRand) {
+				var fileName = rline.ToString(); 
+				sData.WriteLine(fileName);
+			}
 		}
 
-		print(PlayerPrefs.GetString("questFile"));
+
+
+
 
 		// dirty output for testing purposes.
 

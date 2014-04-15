@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Xml;
+using System.IO;
+
 
 public class guiTest : MonoBehaviour {
 
 	bool showQuest = true;
-	int questX = (Screen.width / 2) - (Screen.width / 4);
-	int questY = (Screen.height / 2) - (Screen.height / 4);
+	int questX = (Screen.width / 2);
+	int questY = (Screen.height / 4);
 	int questWidth = (Screen.width / 2);
 	int questHeight = (Screen.height / 2);
+
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +24,10 @@ public class guiTest : MonoBehaviour {
 	void Update () {
 	
 		if (Input.GetKeyDown("space")) {
+			int round = PlayerPrefs.GetInt("round");
+			round++;
+			PlayerPrefs.SetInt("round", round);
+
 			showQuest = !showQuest;
 		}
 
@@ -29,19 +38,45 @@ public class guiTest : MonoBehaviour {
 		if(showQuest) {
 
 			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load(PlayerPrefs.GetString("questFile"));
 
+			string line = "";
+			using (StreamReader sr = new StreamReader(Application.dataPath + "/" + "Quests" + "/" + "randomQuestList.txt"))
+			for (int i = 0; i < 5; i++)
+			{
+				line = sr.ReadLine();
+				if (i == PlayerPrefs.GetInt("round"))
+					break;
+			}
+
+
+			xmlDoc.Load(line);
+
+			print (line);
+
+			XmlNodeList questName = xmlDoc.GetElementsByTagName("name");
+			XmlNodeList desc = xmlDoc.GetElementsByTagName("desc");
+			XmlNodeList begr = xmlDoc.GetElementsByTagName("begr");
 
 
 			//GUI Stuff
 
-			GUI.TextField(new Rect(questX , questY, questWidth, questHeight), "QuestText");
-			GUI.TextField(new Rect(questX, questY - 35, 200, 29), "QuestTitel");
+			GUILayout.Space(20);
+			GUI.skin.textField.wordWrap = true;
+			//Beschreibung in da riesen box
+			GUI.TextField(new Rect(questX , questY, questWidth, questHeight), desc[0].InnerText);
+			//Titel
+			GUI.TextField(new Rect(questX, questY - 35, 200, 29), questName[0].InnerText);
 
-			/*if (GUI.Button(new Rect(Screen.width / 3, (Screen.height / 2) - 50, 100, 20), "Display 10")) {
 
-			}*/
+			if (GUI.Button(new Rect(questWidth / 2 + 15, questY + (questHeight / 2), 100, 50), "A")) {
 
+			}
+			if (GUI.Button(new Rect(questWidth/5 * 4 + 15, questY + (questHeight / 2), 100, 50), "B")) {
+				
+			}
+			if (GUI.Button(new Rect(questX + questWidth/3 * 2 + 15, questY + (questHeight / 2), 100, 50), "C")) {
+				
+			}
 
 
 		}
