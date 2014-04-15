@@ -25,7 +25,7 @@ public class gameTest : MonoBehaviour {
 
 	}
 
-
+	//supergeil
 	void processInput() {
 
 		if(Input.GetKeyDown("w")) {
