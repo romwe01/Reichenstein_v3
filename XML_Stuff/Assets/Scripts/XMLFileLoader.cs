@@ -107,6 +107,7 @@ public class XMLFileLoader : MonoBehaviour {
 			}
 		}
 
+		//komment
 		// randomize lists for each century.
 		ArrayList aRand = randomize(aList);
 		ArrayList bRand = randomize(bList);
