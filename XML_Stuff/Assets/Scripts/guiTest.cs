@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Xml;
 
 public class guiTest : MonoBehaviour {
 
@@ -27,12 +28,22 @@ public class guiTest : MonoBehaviour {
 
 		if(showQuest) {
 
+			XmlDocument xmlDoc = new XmlDocument();
+			xmlDoc.Load(PlayerPrefs.GetString("questFile"));
+
+
+
+			//GUI Stuff
+
 			GUI.TextField(new Rect(questX , questY, questWidth, questHeight), "QuestText");
 			GUI.TextField(new Rect(questX, questY - 35, 200, 29), "QuestTitel");
 
 			/*if (GUI.Button(new Rect(Screen.width / 3, (Screen.height / 2) - 50, 100, 20), "Display 10")) {
 
 			}*/
+
+
+
 		}
 
 		string pWirt = PlayerPrefs.GetInt("pWirt").ToString();

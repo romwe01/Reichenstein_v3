@@ -1,4 +1,5 @@
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\A_Der_Beginn.xml
+C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\A_Reisender_Händler.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\A_Schnitzel.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\A_Suppe.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\B_Die_Pest.xml
@@ -8,8 +9,10 @@ C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\B_Nachbar
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\B_Robot_Aufstand.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\C_Der_brennende_Wald.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\C_Ein_Anschlag.xml
+C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\C_Hinter_verschlossenen_Türen.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\C_Stein_der_Weisen.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\D_Dunkle_Wolken.xml
+C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\D_Flüssige_Nahrungsmittel.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\D_Gartenbau.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\D_Gartenzwerg.xml
 C:\Users\beda\Documents\GitHub\Reichenstein_v3\XML_Stuff\Assets\Quests\D_Springbrunnen.xml
