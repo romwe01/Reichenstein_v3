@@ -6,6 +6,7 @@ public class gameTest : MonoBehaviour {
 	public int pWirt = 60;
 	public int pBev = 60;
 	public int pNat = 60;
+	int round = 0;
 	int cWirt;
 	int cBev;
 	int cNat;
@@ -42,6 +43,8 @@ public class gameTest : MonoBehaviour {
 			cNat = PlayerPrefs.GetInt("pNat");
 			cNat -= 5;
 			PlayerPrefs.SetInt("pNat", cNat);
+			round++;
+			PlayerPrefs.SetInt("round", round);
 			//print("Wirt: " + PlayerPrefs.GetInt("pWirt") + " Bev: " + PlayerPrefs.GetInt("pBev") + " Nat: " + PlayerPrefs.GetInt("pNat"));
 		}
 		

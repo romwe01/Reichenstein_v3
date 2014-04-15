@@ -106,16 +106,22 @@ public class XMLFileLoader : MonoBehaviour {
 				dList.Add(line);
 			}
 		}
-
-		//komment
+		
 		// randomize lists for each century.
 		ArrayList aRand = randomize(aList);
 		ArrayList bRand = randomize(bList);
 		ArrayList cRand = randomize(cList);
 		ArrayList dRand = randomize(dList);
 
+		if(PlayerPrefs.GetInt("round") < questCount) {
+			PlayerPrefs.SetString("questFile", (string) aRand[PlayerPrefs.GetInt("round")]);
+		}
+
+		print(PlayerPrefs.GetString("questFile"));
+
 		// dirty output for testing purposes.
-		foreach (string i in aRand)
+
+		/*foreach (string i in aRand)
 		{
 			print(i);
 		}
@@ -130,7 +136,7 @@ public class XMLFileLoader : MonoBehaviour {
 		foreach (string i in dRand)
 		{
 			print(i);
-		}
+		}*/
 	
 	}
 
