@@ -26,12 +26,10 @@ public class gameTest : MonoBehaviour {
 	}
 
 	//supergeil
-<<<<<<< HEAD
-	//megatittenaffengeil
-=======
+
 	//dubidubidu
 	//meg
->>>>>>> d35bbdf3985ba8e1df454032d6f83f642b60d7c1
+
 	void processInput() {
 
 		if(Input.GetKeyDown("w")) {
