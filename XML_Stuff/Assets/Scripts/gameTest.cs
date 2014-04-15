@@ -26,6 +26,7 @@ public class gameTest : MonoBehaviour {
 	}
 
 	//supergeil
+	//dubidubidu
 	void processInput() {
 
 		if(Input.GetKeyDown("w")) {
