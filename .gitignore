@@ -3,12 +3,13 @@
 *.csproj
 *.pidb
 *.unityproj
+*.meta
 .DS_Store
 XML_Stuff/Library/FailedAssetImports.txt
 XML_Stuff/Library/cache/
 XML_Stuff/Library/previews/
 XML_Stuff/Library/ScriptAssemblies
-XML_Stuff/Library/metadata/
+XML_Stuff/Library/metadata/*
 XML_Stuff/Library/assetDatabase3
 XML_Stuff/obj
 XML_Stuff/Temp
@@ -46,3 +47,9 @@ XML_Stuff/Assets/Quests/D_Gartenzwerg.xml.meta
 XML_Stuff/Assets/Quests/D_Springbrunnen.xml.meta
 XML_Stuff/Assets/Quests/D_Springbrunnen.xml.meta
 XML_Stuff/Assets/Quests/questList.txt.meta
+
+XML_Stuff/Builds/testBuild_Data/Quests/A_Reisender_Händler.xml
+
+XML_Stuff/Builds/testBuild_Data/Quests/C_Hinter_verschlossenen_Türen.xml
+
+XML_Stuff/Builds/testBuild_Data/Quests/D_Flüssige_Nahrungsmittel.xml
