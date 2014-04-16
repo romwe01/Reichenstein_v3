@@ -9,7 +9,6 @@ using System.IO;
 public class guiTest : MonoBehaviour {
 
 	bool showQuest = true;
-
 	int cWirt, cBev, cNat;
 
 
