@@ -9,11 +9,6 @@ using System.IO;
 public class guiTest : MonoBehaviour {
 
 	bool showQuest = true;
-	int questX = (Screen.width / 4);
-	int questY = (Screen.height / 4);
-	int questWidth = (Screen.width / 2);
-	int questHeight = (Screen.height / 2);
-
 	int cWirt, cBev, cNat;
 
 
