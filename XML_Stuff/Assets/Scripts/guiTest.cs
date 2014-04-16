@@ -4,15 +4,17 @@ using System.Xml;
 using System.IO;
 
 
+
+
 public class guiTest : MonoBehaviour {
 
 	bool showQuest = true;
-	int questX = (Screen.width / 2);
+	int questX = (Screen.width / 4);
 	int questY = (Screen.height / 4);
 	int questWidth = (Screen.width / 2);
 	int questHeight = (Screen.height / 2);
 
-
+	int cWirt, cBev, cNat;
 
 
 	// Use this for initialization
@@ -21,22 +23,19 @@ public class guiTest : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-		if (Input.GetKeyDown("space")) {
-			int round = PlayerPrefs.GetInt("round");
-			round++;
-			PlayerPrefs.SetInt("round", round);
-
+	void Update () 
+	{
+		if (Input.GetKeyDown("space")) 
+		{
 			showQuest = !showQuest;
 		}
-
 	}
 
-	void OnGUI() {
-
-		if(showQuest) {
-
+	void OnGUI() 
+	{
+		//SOLL NUR AUSGEFÜHRT WERDEN WENN DES FENSTER OFFEN IS
+		if(showQuest) 
+		{
 			XmlDocument xmlDoc = new XmlDocument();
 
 			string line = "";
@@ -48,39 +47,63 @@ public class guiTest : MonoBehaviour {
 					break;
 			}
 
-
 			xmlDoc.Load(line);
 
-			print (line);
-
+			//INHALTE VO DEM FILE
 			XmlNodeList questName = xmlDoc.GetElementsByTagName("name");
 			XmlNodeList desc = xmlDoc.GetElementsByTagName("desc");
 			XmlNodeList begr = xmlDoc.GetElementsByTagName("begr");
+			XmlNodeList umwelt = xmlDoc.GetElementsByTagName("umwelt");
+			XmlNodeList bev = xmlDoc.GetElementsByTagName("bevoelk");
+			XmlNodeList wirt = xmlDoc.GetElementsByTagName("wirtschaft");
 
 
-			//GUI Stuff
+
+			//---------GUI STUFF----------
 
 			GUILayout.Space(20);
 			GUI.skin.textField.wordWrap = true;
-			//Beschreibung in da riesen box
-			GUI.TextField(new Rect(questX , questY, questWidth, questHeight), desc[0].InnerText);
-			//Titel
-			GUI.TextField(new Rect(questX, questY - 35, 200, 29), questName[0].InnerText);
 
 
-			if (GUI.Button(new Rect(questWidth / 2 + 15, questY + (questHeight / 2), 100, 50), "A")) {
+			//DIE BUTTONS FÜR QUESTAUSWAHL
+			if (GUI.Button(new Rect(Screen.width / 4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "A")) 
+			{
+				calculatePoints(int.Parse(wirt[0].InnerText), int.Parse(bev[0].InnerText), int.Parse(umwelt[0].InnerText));
+				int round = PlayerPrefs.GetInt("round");
+				round++;
+				PlayerPrefs.SetInt("round", round);
+			}
+			
+			if (GUI.Button(new Rect(Screen.width/5 * 2 +30, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "B")) 
+			{
+				calculatePoints(int.Parse(wirt[1].InnerText), int.Parse(bev[1].InnerText), int.Parse(umwelt[1].InnerText));
+				int round = PlayerPrefs.GetInt("round");
+				round++;
+				PlayerPrefs.SetInt("round", round);
+			}
+			if (GUI.Button(new Rect(Screen.width/7*4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "C")) 
+			{
+				calculatePoints(int.Parse(wirt[2].InnerText), int.Parse(bev[2].InnerText), int.Parse(umwelt[2].InnerText));
+				int round = PlayerPrefs.GetInt("round");
+				round++;
+				PlayerPrefs.SetInt("round", round);
+			}
 
-			}
-			if (GUI.Button(new Rect(questWidth/5 * 4 + 15, questY + (questHeight / 2), 100, 50), "B")) {
-				
-			}
-			if (GUI.Button(new Rect(questX + questWidth/3 * 2 + 15, questY + (questHeight / 2), 100, 50), "C")) {
-				
-			}
+			//RIESENBOX MIT BESCHREIBUNG
+			GUI.TextField(new Rect(Screen.width/4 , Screen.height/4, Screen.width/2, Screen.height/2), desc[0].InnerText);
+			//TITEL
+			GUI.TextField(new Rect(Screen.width/4, Screen.height/4 - 35, 200, 29), questName[0].InnerText);
+
+			//DIE KLEINEN TEXTBOXEN MIT KURZBESCHREIBUNGEN 
+			GUI.TextField(new Rect(Screen.width / 4 +20, Screen.height/2, Screen.width/7, Screen.height/6), desc[1].InnerText);
+			GUI.TextField(new Rect(Screen.width/5 * 2 +30, Screen.height/2, Screen.width/7, Screen.height/6), desc[2].InnerText);
+			GUI.TextField(new Rect(Screen.width/7*4 +20, Screen.height/2, Screen.width/7, Screen.height/6), desc[3].InnerText);
+
 
 
 		}
 
+		//ANZEIGETAFELN AM UNTEREN BILDSCHIRMRAND
 		string pWirt = PlayerPrefs.GetInt("pWirt").ToString();
 		GUI.TextField(new Rect((Screen.width / 2) - 200, Screen.height -60, 100, 50), "Wirtschaft\n" + pWirt);
 
@@ -90,6 +113,32 @@ public class guiTest : MonoBehaviour {
 		string pNat = PlayerPrefs.GetInt("pNat").ToString();
 		GUI.TextField(new Rect((Screen.width / 2) + 100, Screen.height -60, 100, 50), "Natur\n" + pNat);
 	}
+
+	//INSIDE BOUNDARIES UND NEUBERECHNUNG DER PUNKTE BEIM KLICKEN DER BUTTONS
+	void calculatePoints(int xmlData1, int xmlData2, int xmlData3)
+	{
+		if  ((PlayerPrefs.GetInt("pWirt") + xmlData1) >= 0 && (PlayerPrefs.GetInt("pWirt") + xmlData1) <= 100)
+		{
+			cWirt = PlayerPrefs.GetInt("pWirt");
+			cWirt += xmlData1;
+			PlayerPrefs.SetInt("pWirt", cWirt);
+		}
+
+		if  ((PlayerPrefs.GetInt("pBev") + xmlData2) >= 0 && (PlayerPrefs.GetInt("pBev") + xmlData2) <= 100)
+		{
+			cBev = PlayerPrefs.GetInt("pBev");
+			cBev += xmlData2;
+			PlayerPrefs.SetInt("pBev", cBev);
+		}
+
+		if  ((PlayerPrefs.GetInt("pNat") + xmlData3) >= 0 && (PlayerPrefs.GetInt("pNat") + xmlData3) <= 100)
+		{
+			cNat = PlayerPrefs.GetInt("pNat");
+			cNat += xmlData3;
+			PlayerPrefs.SetInt("pNat", cNat);
+		}
+	}
+
 
 
 }
