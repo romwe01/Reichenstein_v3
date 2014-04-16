@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <quest>
    <main>
-       <name>Die Pest</name>
+       <name>Gartenbau</name>
        <desc>In den umliegenden Dörfern breitet sich die Pest aus! Eine äußerst brisante Entscheidung steht an, so geht es doch um Leben und Tod!</desc>
-       <time>B</time>
+       <time>D</time>
+	   <historic>True</historic>
    </main>
    <options>
        <a>
