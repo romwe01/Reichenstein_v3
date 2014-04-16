@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<quest>
+   <main>
+       <name>Anstrengende Reise</name>
+       <desc>In den umliegenden Dörfern breitet sich die Pest aus! Eine äußerst brisante Entscheidung steht an, so geht es doch um Leben und Tod!</desc>
+       <time>C</time>
+	   <historic>False</historic>
+   </main>
+   <options>
+       <a>
+           <desc>Sie trennen die infizierten von den gesunden Bewohnern.</desc>
+           <umwelt>+10</umwelt>
+           <bevoelk>-5</bevoelk>
+           <wirtschaft>-5</wirtschaft>
+           <begr>Die kranke Bevölkerung verendet. Die Nachfrage nach Holz sinkt. Die Gilden leiden.</begr>
+       </a>
+       <b>
+           <desc>Sie vergiften alle infizierten Ratten und verhindern eine rasche Verbreitung der Krankheit.</desc>
+           <umwelt>-20</umwelt>
+           <bevoelk>+10</bevoelk>
+           <wirtschaft>+5</wirtschaft>
+           <begr>Sie bekämpfen die Pest erfolgreich, jedoch gelangt das Gift über das Wasser in die Wälder und richtet enorme Schäden an.</begr>
+       </b>
+       <c>
+           <desc>Sie unternehmen nichts, da die lokalen Gilden auf die Arbeitskraft der Bevölkerung angewiesen sind.</desc>
+           <umwelt>0</umwelt>
+           <bevoelk>-20</bevoelk>
+           <wirtschaft>+10</wirtschaft>
+           <begr>Die Wirtschaft freut sich, die Menschen sterben leider.</begr>
+       </c>
+   </options>
+</quest>
