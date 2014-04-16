@@ -3,12 +3,13 @@
 *.csproj
 *.pidb
 *.unityproj
+*.meta
 .DS_Store
 XML_Stuff/Library/FailedAssetImports.txt
 XML_Stuff/Library/cache/
 XML_Stuff/Library/previews/
 XML_Stuff/Library/ScriptAssemblies
-XML_Stuff/Library/metadata/
+XML_Stuff/Library/metadata/*
 XML_Stuff/Library/assetDatabase3
 XML_Stuff/obj
 XML_Stuff/Temp

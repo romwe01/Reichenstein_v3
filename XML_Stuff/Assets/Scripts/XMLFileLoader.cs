@@ -10,7 +10,7 @@ public class XMLFileLoader : MonoBehaviour {
 	public string questsFolder = "Quests";
 	public string sFileName = "questList.txt"; // Filename of List for Quests.
 	public string rFileName = "randomQuestList.txt";
-	public int questCount = 4;
+	public int questCount = 5;
 	char[] timeZone = {'A', 'B', 'C', 'D'};
 	static System.Random rnd = new System.Random();
 	ArrayList aList = new ArrayList();
