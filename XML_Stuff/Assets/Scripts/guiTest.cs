@@ -9,17 +9,22 @@ using System.IO;
 public class guiTest : MonoBehaviour {
 
 	bool showQuest = true;
-	int questX = (Screen.width / 4);
-	int questY = (Screen.height / 4);
-	int questWidth = (Screen.width / 2);
-	int questHeight = (Screen.height / 2);
 
 	int cWirt, cBev, cNat;
 
 
+	public int pWirt = 60;
+	public int pBev = 60;
+	public int pNat = 60;
+	bool castleBuilt = true;
+
+
 	// Use this for initialization
 	void Start () {
-
+		PlayerPrefs.SetInt("pWirt", 60);
+		PlayerPrefs.SetInt("pBev", 60);
+		PlayerPrefs.SetInt("pNat", 60);
+		PlayerPrefs.SetInt("round", 0);
 	}
 	
 	// Update is called once per frame
@@ -29,6 +34,9 @@ public class guiTest : MonoBehaviour {
 		{
 			showQuest = !showQuest;
 		}
+
+
+
 	}
 
 	void OnGUI() 
@@ -36,70 +44,111 @@ public class guiTest : MonoBehaviour {
 		//SOLL NUR AUSGEFÜHRT WERDEN WENN DES FENSTER OFFEN IS
 		if(showQuest) 
 		{
-			XmlDocument xmlDoc = new XmlDocument();
-
-			string line = "";
-			using (StreamReader sr = new StreamReader(Application.dataPath + "/" + "Quests" + "/" + "randomQuestList.txt"))
-			for (int i = 0; i < 5; i++)
+			if (castleBuilt)
 			{
-				line = sr.ReadLine();
-				if (i == PlayerPrefs.GetInt("round"))
-					break;
+
+				XmlDocument xmlDoc = new XmlDocument();
+
+				string line = "";
+				using (StreamReader sr = new StreamReader(Application.dataPath + "/" + "Quests" + "/" + "randomQuestList.txt"))
+				for (int i = 0; i < 20; i++)
+				{
+					line = sr.ReadLine();
+					if (i == PlayerPrefs.GetInt("round"))
+						break;
+				}
+
+				xmlDoc.Load(line);
+
+				//INHALTE VO DEM FILE
+				XmlNodeList questName = xmlDoc.GetElementsByTagName("name");
+				XmlNodeList desc = xmlDoc.GetElementsByTagName("desc");
+				XmlNodeList begr = xmlDoc.GetElementsByTagName("begr");
+				XmlNodeList umwelt = xmlDoc.GetElementsByTagName("umwelt");
+				XmlNodeList bev = xmlDoc.GetElementsByTagName("bevoelk");
+				XmlNodeList wirt = xmlDoc.GetElementsByTagName("wirtschaft");
+
+
+
+				//---------GUI STUFF----------
+
+				GUILayout.Space(20);
+				GUI.skin.textField.wordWrap = true;
+
+
+				//DIE BUTTONS FÜR QUESTAUSWAHL
+				if (GUI.Button(new Rect(Screen.width / 4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "A")) 
+				{
+					if (PlayerPrefs.GetInt("round") == 4 || PlayerPrefs.GetInt("round") == 9 || PlayerPrefs.GetInt("round") == 14 || PlayerPrefs.GetInt("round") == 19)
+					{
+						castleBuilt = false;
+					}
+					calculatePoints(int.Parse(wirt[0].InnerText), int.Parse(bev[0].InnerText), int.Parse(umwelt[0].InnerText));
+					int round = PlayerPrefs.GetInt("round");
+					round++;
+					PlayerPrefs.SetInt("round", round);
+				}
+				
+				if (GUI.Button(new Rect(Screen.width/5 * 2 +30, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "B")) 
+				{
+					if (PlayerPrefs.GetInt("round") == 4 || PlayerPrefs.GetInt("round") == 9 || PlayerPrefs.GetInt("round") == 14 || PlayerPrefs.GetInt("round") == 19)
+					{
+						castleBuilt = false;
+					}
+
+					calculatePoints(int.Parse(wirt[1].InnerText), int.Parse(bev[1].InnerText), int.Parse(umwelt[1].InnerText));
+					int round = PlayerPrefs.GetInt("round");
+					round++;
+					PlayerPrefs.SetInt("round", round);
+				}
+				if (GUI.Button(new Rect(Screen.width/7*4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "C")) 
+				{
+					if (PlayerPrefs.GetInt("round") == 4 || PlayerPrefs.GetInt("round") == 9 || PlayerPrefs.GetInt("round") == 14 || PlayerPrefs.GetInt("round") == 19)
+					{
+						castleBuilt = false;
+					}
+					calculatePoints(int.Parse(wirt[2].InnerText), int.Parse(bev[2].InnerText), int.Parse(umwelt[2].InnerText));
+					int round = PlayerPrefs.GetInt("round");
+					round++;
+					PlayerPrefs.SetInt("round", round);
+				}
+
+				//RIESENBOX MIT BESCHREIBUNG
+				GUI.TextField(new Rect(Screen.width/4 , Screen.height/4, Screen.width/2, Screen.height/2), desc[0].InnerText);
+				//TITEL
+				GUI.TextField(new Rect(Screen.width/4, Screen.height/4 - 35, 200, 29), questName[0].InnerText);
+
+				//DIE KLEINEN TEXTBOXEN MIT KURZBESCHREIBUNGEN 
+				GUI.TextField(new Rect(Screen.width/ 4 +20, Screen.height/2, Screen.width/7, Screen.height/6), desc[1].InnerText);
+				GUI.TextField(new Rect(Screen.width/5 * 2 +30, Screen.height/2, Screen.width/7, Screen.height/6), desc[2].InnerText);
+				GUI.TextField(new Rect(Screen.width/7*4 +20, Screen.height/2, Screen.width/7, Screen.height/6), desc[3].InnerText);
+
 			}
-
-			xmlDoc.Load(line);
-
-			//INHALTE VO DEM FILE
-			XmlNodeList questName = xmlDoc.GetElementsByTagName("name");
-			XmlNodeList desc = xmlDoc.GetElementsByTagName("desc");
-			XmlNodeList begr = xmlDoc.GetElementsByTagName("begr");
-			XmlNodeList umwelt = xmlDoc.GetElementsByTagName("umwelt");
-			XmlNodeList bev = xmlDoc.GetElementsByTagName("bevoelk");
-			XmlNodeList wirt = xmlDoc.GetElementsByTagName("wirtschaft");
-
-
-
-			//---------GUI STUFF----------
-
-			GUILayout.Space(20);
-			GUI.skin.textField.wordWrap = true;
-
-
-			//DIE BUTTONS FÜR QUESTAUSWAHL
-			if (GUI.Button(new Rect(Screen.width / 4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "A")) 
+			else 
 			{
-				calculatePoints(int.Parse(wirt[0].InnerText), int.Parse(bev[0].InnerText), int.Parse(umwelt[0].InnerText));
-				int round = PlayerPrefs.GetInt("round");
-				round++;
-				PlayerPrefs.SetInt("round", round);
+				if (PlayerPrefs.GetInt ("round") != 20)
+				{
+					if (GUI.Button(new Rect(Screen.width/7*4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "OK")) 
+					{
+						castleBuilt = true;
+					}
+					GUI.TextField(new Rect(Screen.width/4 , Screen.height/4, Screen.width/2, Screen.height/2), "castleBuilt");
+				}
+				//FINISH GUI
+
+				if (PlayerPrefs.GetInt("round") == 20 )
+				{
+					if (GUI.Button(new Rect(Screen.width/7*4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "OK")) 
+					{
+
+						Application.LoadLevel(Application.loadedLevel);
+					}
+					GUI.TextField(new Rect(Screen.width/4 , Screen.height/4, Screen.width/2, Screen.height/2), "Hurraaa! Du hast gewonnen!");
+					
+					print (PlayerPrefs.GetInt("round"));
+				}
+
 			}
-			
-			if (GUI.Button(new Rect(Screen.width/5 * 2 +30, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "B")) 
-			{
-				calculatePoints(int.Parse(wirt[1].InnerText), int.Parse(bev[1].InnerText), int.Parse(umwelt[1].InnerText));
-				int round = PlayerPrefs.GetInt("round");
-				round++;
-				PlayerPrefs.SetInt("round", round);
-			}
-			if (GUI.Button(new Rect(Screen.width/7*4 +20, Screen.height/6 + Screen.height / 2, Screen.width/7, 25), "C")) 
-			{
-				calculatePoints(int.Parse(wirt[2].InnerText), int.Parse(bev[2].InnerText), int.Parse(umwelt[2].InnerText));
-				int round = PlayerPrefs.GetInt("round");
-				round++;
-				PlayerPrefs.SetInt("round", round);
-			}
-
-			//RIESENBOX MIT BESCHREIBUNG
-			GUI.TextField(new Rect(Screen.width/4 , Screen.height/4, Screen.width/2, Screen.height/2), desc[0].InnerText);
-			//TITEL
-			GUI.TextField(new Rect(Screen.width/4, Screen.height/4 - 35, 200, 29), questName[0].InnerText);
-
-			//DIE KLEINEN TEXTBOXEN MIT KURZBESCHREIBUNGEN 
-			GUI.TextField(new Rect(Screen.width / 4 +20, Screen.height/2, Screen.width/7, Screen.height/6), desc[1].InnerText);
-			GUI.TextField(new Rect(Screen.width/5 * 2 +30, Screen.height/2, Screen.width/7, Screen.height/6), desc[2].InnerText);
-			GUI.TextField(new Rect(Screen.width/7*4 +20, Screen.height/2, Screen.width/7, Screen.height/6), desc[3].InnerText);
-
-
 
 		}
 
@@ -112,6 +161,7 @@ public class guiTest : MonoBehaviour {
 
 		string pNat = PlayerPrefs.GetInt("pNat").ToString();
 		GUI.TextField(new Rect((Screen.width / 2) + 100, Screen.height -60, 100, 50), "Natur\n" + pNat);
+
 	}
 
 	//INSIDE BOUNDARIES UND NEUBERECHNUNG DER PUNKTE BEIM KLICKEN DER BUTTONS

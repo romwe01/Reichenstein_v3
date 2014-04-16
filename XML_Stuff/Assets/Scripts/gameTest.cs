@@ -13,10 +13,7 @@ public class gameTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefs.SetInt("pWirt", 60);
-		PlayerPrefs.SetInt("pBev", 60);
-		PlayerPrefs.SetInt("pNat", 60);
-		PlayerPrefs.SetInt("round", 0);
+
 	}
 	
 	// Update is called once per frame

@@ -27,6 +27,11 @@ public class XMLFileLoader : MonoBehaviour {
 
 	}
 
+
+	public int getQuestCount()
+	{
+		return questCount;
+	}
 	// Update is called once per frame
 	void Update () {
 	
@@ -157,14 +162,14 @@ public class XMLFileLoader : MonoBehaviour {
 		foreach (string i in dRand)
 		{
 			print(i);
-		}*/
-	
+		}
+	*/
 	}
 
 
 	ArrayList randomize(ArrayList list) {
 		ArrayList randomizedList = new ArrayList();
-		while (randomizedList.Count <= questCount + 1) { // TODO: Fix heavy workaround for boundaries.
+		while (randomizedList.Count <= questCount +2) { // TODO: Fix heavy workaround for boundaries.
 			var index = rnd.Next (0, list.Count);
 			randomizedList.Add(list[index]);
 			list.RemoveAt(index);

@@ -1,4 +1,5 @@
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/A_Der_Beginn.xml
+/Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/A_Geilgeilgeil.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/A_Reisender_Händler.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/A_Schnitzel.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/A_Suppe.xml
@@ -7,6 +8,7 @@
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/B_Kirchenproblem.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/B_Nachbarschaftshilfe.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/B_Robot_Aufstand.xml
+/Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/C_Anstrengende_Reise.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/C_Der_brennende_Wald.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/C_Ein_Anschlag.xml
 /Users/christinabauer/Documents/Hagenberg/4. Semester/pro4/Reichenstein_v3/XML_Stuff/Assets/Quests/C_Hinter_verschlossenen_Türen.xml
